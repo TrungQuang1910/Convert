@@ -15,21 +15,21 @@ X_test = X_test.reshape(10000, 28, 28, 1)
 y_train = to_categorical(y_train)
 y_test = to_categorical(y_test)
 
-# model = Sequential()
-# model.add(Conv2D(64, input_shape=(28, 28, 1), kernel_size=(
-#     3, 3), activation='relu', padding='same'))
-# model.add(MaxPooling2D(pool_size=(2, 2), strides=2))
-# model.add(Conv2D(32, activation='relu', kernel_size=(3, 3), padding='same'))
-# model.add(MaxPooling2D(pool_size=(2, 2), strides=2))
-# model.add(Flatten())
-# model.add(Dense(10, activation='softmax'))
-# model.summary()
+model = Sequential()
+model.add(Conv2D(64, input_shape=(28, 28, 1), kernel_size=(
+    3, 3), activation='relu', padding='same'))
+model.add(MaxPooling2D(pool_size=(2, 2), strides=2))
+model.add(Conv2D(32, activation='relu', kernel_size=(3, 3), padding='same'))
+model.add(MaxPooling2D(pool_size=(2, 2), strides=2))
+model.add(Flatten())
+model.add(Dense(10, activation='softmax'))
+model.summary()
 
-# model.compile(loss='categorical_crossentropy',
-#               metrics=['accuracy'], optimizer='adam')
-# model.fit(X_train, y_train, epochs=3, validation_data=(X_test, y_test))
+model.compile(loss='categorical_crossentropy',
+              metrics=['accuracy'], optimizer='adam')
+model.fit(X_train, y_train, epochs=3, validation_data=(X_test, y_test))
 
-# model.save('Mnist.h5')
+model.save('Mnist.h5')
 model = load_model('Mnist.h5')
 
 X_new = X_test[164]
